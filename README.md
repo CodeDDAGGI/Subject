@@ -24,3 +24,7 @@
 * perf: 성능 개선 관련 변경
 * ci: CI 설정 변경 (예: GitHub Actions, Jenkins 등)
 * revert: 이전 커밋 되돌리기
+
+
+### ERD 다이어 그램
+![영화 리뷰 플랫폼](https://github.com/user-attachments/assets/16e70ce2-dd94-4dea-b0f5-cbda2d4063f5)

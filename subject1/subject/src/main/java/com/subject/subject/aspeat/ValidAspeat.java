@@ -11,10 +11,10 @@ import org.springframework.validation.BeanPropertyBindingResult;
 @Component
 public class ValidAspeat {
 
-    @Pointcut("@anotation(com.subject.subject.aspeat.anotation.ValidAop)")
+    @Pointcut("@annotation(com.subject.subject.aspeat.anotation.ValidAop)")
     private void pointCut(){}
 
-    @Around("pointCut")
+    @Around("pointCut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
         Object[] args = proceedingJoinPoint.getArgs();
         BeanPropertyBindingResult bindingResult = null;
@@ -27,7 +27,5 @@ public class ValidAspeat {
         }
 
         return proceedingJoinPoint.proceed();
-
-
     }
 }

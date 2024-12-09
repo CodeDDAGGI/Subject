@@ -1,5 +1,6 @@
 package com.subject.subject.security.jwt;
 
+import com.subject.subject.entity.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+
 
 @Component
 public class JwtProvider {
@@ -22,10 +24,10 @@ public class JwtProvider {
         return new Date(new Date().getTime() + (1000l * 60 * 60 * 24 * 30));
     }
 
-    public String generateAccessToken(String username) {
+    public String generateAccessToken(User user) {
         return Jwts.builder()
-                .claim("username", username)
-                .expiration(getExpireDate())
+                .claim("userId", user.getId())
+                .setExpiration(getExpireDate())
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -40,10 +42,11 @@ public class JwtProvider {
     }
 
     public String getClaims(String token) {
-        JwtProvider jwtProvider = Jwts.parser()
+        return Jwts.parserBuilder()
                 .setSigningKey(key)
-                .build();
-
-        return jwtProvider.parseClaimsJws(token).getPayload();
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .toString();
     }
 }

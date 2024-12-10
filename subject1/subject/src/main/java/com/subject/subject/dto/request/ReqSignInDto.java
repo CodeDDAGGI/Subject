@@ -1,5 +1,6 @@
 package com.subject.subject.dto.request;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.subject.subject.entity.Review">
+    <insert id="add"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        insert into Reviews_tb  (movie_id, user_id, rating, content, created_at)
+        values(#{movieId}, #{userId}, #{content}, #{rating}))
+    </insert>
+
+    <select id="getByMovieId" resultType="com.subject.subject.entity.Review">
+        select
+            r.id,
+            u.name AS user,
+            r.rating,
+            r.content,
+            r.created_at
+        from
+            Reviews_tb r
+        join
+            Users_tb u on r.user_id = u.id
+        where
+            r.movie_id = #{movieId}
+    </select>
+</mapper>

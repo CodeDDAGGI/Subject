@@ -41,12 +41,10 @@ public class JwtProvider {
 
     }
 
-    public String getClaims(String token) {
-        return Jwts.parserBuilder()
+    public Claims getClaims(String token) {
+        JwtParser jwtParser = Jwts.parser()
                 .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .toString();
+                .build();
+        return  jwtParser.parseClaimsJws(token).getBody();
     }
 }

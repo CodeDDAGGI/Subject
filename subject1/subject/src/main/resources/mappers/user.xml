@@ -18,4 +18,12 @@
         where
             email = #{email}
     </select>
+    <select id="findById" resultType="com.subject.subject.entity.User" >
+        SELECT
+        *
+        FROM
+        user
+        WHERE
+        id = #{id}
+    </select>
 </mapper>

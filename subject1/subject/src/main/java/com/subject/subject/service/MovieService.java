@@ -3,14 +3,11 @@ package com.subject.subject.service;
 import com.subject.subject.dto.request.ReqMovieRegisterDto;
 import com.subject.subject.dto.response.RespMovieRegisterDto;
 import com.subject.subject.entity.Movie;
-import com.subject.subject.entity.User;
 import com.subject.subject.repository.MovieMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class MovieService {
@@ -33,8 +30,7 @@ public class MovieService {
         }
     }
 
-    public Map<String, Object> getMovies(String title, String genre){
-        List<Movie> movies = movieMapper.findByMovie(title, genre);
-        return ;
+    public List<Movie> getMovies(String title, String genre){
+        return movieMapper.findByMovie(title, genre);
     }
 }

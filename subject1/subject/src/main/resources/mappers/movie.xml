@@ -3,7 +3,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.subject.subject.entity.User">
+<mapper namespace="com.subject.subject.entity.Movie">
     <insert id="registerMovie"
             useGeneratedKeys="true"
             keyProperty="id">
@@ -18,11 +18,23 @@
         where
             title = #{title} or director = #{director} or genre = #{genre}
     </select>
-    <select id="findByMovie" resultType="Movie">
+    <select id="findByMovie" resultType="com.subject.subject.entity.Movie">
         select
-            *
+            mv.id,
+            mv.title,
+            mv.director,
+            mv.genre,
+            mv.releaseDate as releaseDate,
+            AVG(rv.rating) as rating
         from
-            movies_tb
+            movies_tb mv
+        left join
+            reviews_tb rv
+        on
+            mv.id = rv.movieId
         where
+            mv.genre = #{genre}
+            AND
+            mv.title = #{title}
     </select>
 </mapper>

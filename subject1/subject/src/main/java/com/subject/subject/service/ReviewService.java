@@ -19,7 +19,7 @@ public class ReviewService {
                 .build();
     }
 
-    public RespReviewDto getReviews(int movieId) {
+    public RespReviewDto getReviews(Long movieId) {
         return reviewMapper.getReviewsByMovieId(movieId);
 
     }

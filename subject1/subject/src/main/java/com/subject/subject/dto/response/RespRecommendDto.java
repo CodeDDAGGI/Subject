@@ -10,4 +10,5 @@ public class RespRecommendDto {
     private String title;
     private Double rating;
     private String releaseDate;
+    private Long reviewCount;
 }

@@ -2,6 +2,7 @@ package com.subject.subject.controller;
 
 import com.subject.subject.dto.request.ReqMovieRegisterDto;
 import com.subject.subject.dto.request.ReqReviewDto;
+import com.subject.subject.dto.response.RespReviewDto;
 import com.subject.subject.entity.Movie;
 import com.subject.subject.entity.Review;
 import com.subject.subject.entity.User;
@@ -50,7 +51,7 @@ public class MovieController {
 
     @GetMapping("/movies/{movieId}/reviews")
     public ResponseEntity<?> getReviews(@PathVariable Long movieId){
-        List<Review> reviews = reviewService.getReviews(movieId);
+        RespReviewDto reviews = reviewService.getReviews(movieId);
         return ResponseEntity.ok().body(reviews);
     }
 }

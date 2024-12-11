@@ -1,4 +1,4 @@
-package com.example.subject;
+package com.subject.subject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +8,7 @@ class SubjectApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

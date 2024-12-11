@@ -1,15 +1,14 @@
 package com.subject.subject.entity;
 
 import com.subject.subject.security.prinsipalUser.PrincipalUser;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class User {
     private Long id;
     private String name;

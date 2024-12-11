@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 @Component
 public class AuthenticationHandler implements AuthenticationEntryPoint {
     @Override                                                                         // 시큐리티에서 오류가 터지면 authException으로 옴

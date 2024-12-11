@@ -9,7 +9,8 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-    initialization-mode: never
+    initialization-mode: always
+    schema: classpath:schema.sql
 
   h2:
     console:

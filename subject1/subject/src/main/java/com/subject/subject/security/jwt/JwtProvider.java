@@ -16,7 +16,7 @@ public class JwtProvider {
 
     private final Key key;
 
-    public JwtProvider(@Value("@jwt.secret") String secret) {
+    public JwtProvider(@Value("${jwt.secret}") String secret) {
         this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
@@ -45,6 +45,6 @@ public class JwtProvider {
         JwtParser jwtParser = Jwts.parser()
                 .setSigningKey(key)
                 .build();
-        return  jwtParser.parseClaimsJws(token).getBody();
+        return  jwtParser.parseClaimsJws(token).getPayload();
     }
 }

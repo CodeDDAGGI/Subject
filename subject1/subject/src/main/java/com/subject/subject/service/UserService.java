@@ -27,7 +27,12 @@ public class UserService {
         User user = null;
 
         user = dto.toEntity(passwordEncoder);
-
+        User foundUser = userMapper.findByEmail(user.getEmail());
+        if(foundUser != null){
+            if(dto.getEmail().equals(foundUser.getEmail())){
+                System.out.println("중복된 이메일입니다 ");
+            }
+        }
         userMapper.register(user);
         return RespSignUpDto.builder()
                 .user(user)

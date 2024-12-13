@@ -24,16 +24,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().disable();  // 기본 로그인 페이지 비활성화
-        http.httpBasic().disable();  // HTTP Basic 인증 비활성화
-        http.csrf().disable();  // CSRF 비활성화
-        http.headers().frameOptions().disable();  // H2 콘솔에 iframe을 허용
+        http.formLogin().disable();
+        http.httpBasic().disable();
+        http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);  // 세션 비사용
         http.cors();
         http.exceptionHandling().authenticationEntryPoint(authenticationHandler);
 
         http.authorizeRequests()
-                .antMatchers("/auth/**", "/h2-console/**")  // H2 콘솔에 대한 접근 허용
+                .antMatchers("/**","/users/**" )
                 .permitAll()
                 .anyRequest()
                 .authenticated();

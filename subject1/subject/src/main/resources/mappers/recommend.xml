@@ -3,12 +3,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.subject.subject.entity.Review">
+<mapper namespace="com.subject.subject.repository.RecommendMapper">
     <select id="getPopularMovies" resultType="com.subject.subject.entity.Movie">
         select
             *
         from
-            movie
+            Movies_tb
         where
             id in (
                 select
@@ -26,7 +26,7 @@
         select
             *
         from
-            movie
+        Movies_tb
         order by
             release_date desc
         where

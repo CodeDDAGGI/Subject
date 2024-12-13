@@ -3,18 +3,18 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.subject.subject.entity.User">
-    <insert id="save"
+<mapper namespace="com.subject.subject.repository.UserMapper">
+    <insert id="register"
         useGeneratedKeys="true"
         keyProperty="id">
-        insert into users_tb
+        insert into Users_tb (id, name , email , password)
         values(default,#{name},#{email},#{password})
     </insert>
     <select id="findByEmail" resultType="com.subject.subject.entity.User">
         select
             *
         from
-            users_tb
+            Users_tb
         where
             email = #{email}
     </select>
@@ -22,7 +22,7 @@
         SELECT
         *
         FROM
-        user
+        Users_tb
         WHERE
         id = #{id}
     </select>

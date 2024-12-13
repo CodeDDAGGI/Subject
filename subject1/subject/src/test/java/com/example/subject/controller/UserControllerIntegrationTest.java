@@ -16,29 +16,46 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SubjectApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
-public class MovieControllerTest {
+public class UserControllerIntegrationTest {
+
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void MovieControllerTest() throws Exception {
-
-        String movieJson = """
+    void testController() throws Exception {
+        // Given
+        String userJson = """
                 {
-                    "title":"testMovie",
-                    "director":"testDirector",
-                    "genre":"testGenre",
-                    "releaseDate" : "2020-01-01",
+                    "email":"example@example.com",
+                    "name":"testUser",
+                    "password" : "1234"
                 }
                 """;
-
-        ResultActions result = mockMvc.perform(post("/movies")
+        // When & Then
+        ResultActions result = mockMvc.perform(post("/users/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(movieJson))
+                        .content(userJson))
                 .andExpect(status().isCreated());
 
         String responsebody = result.andExpect(status().isCreated()).andReturn().getResponse().getContentAsString();
         System.out.println(responsebody);
     }
 
+    @Test
+    void loginTest() throws Exception {
+        String userJson = """
+                {
+                    "email":"example@example.com",
+                    "password" : "1234"
+                }""";
+        ResultActions mvcResult = mockMvc.perform(post("/users/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(userJson))
+                .andExpect(status().isOk());
+
+        String responsebody = mvcResult.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+//        log.info("responsebody : {}", responsebody);
+        System.out.println(responsebody);
+
+    }
 }

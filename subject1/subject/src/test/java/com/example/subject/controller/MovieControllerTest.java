@@ -28,7 +28,7 @@ public class MovieControllerTest {
                     "title":"testMovie",
                     "director":"testDirector",
                     "genre":"testGenre",
-                    "releaseDate" : "2020-01-01",
+                    "releaseDate" : "2020-01-01"
                 }
                 """;
 
@@ -36,9 +36,9 @@ public class MovieControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(movieJson))
                 .andExpect(status().isCreated());
-
+        System.out.println("결과" + result);
         String responsebody = result.andExpect(status().isCreated()).andReturn().getResponse().getContentAsString();
-        System.out.println(responsebody);
+        System.out.println("리스폰스 값" + responsebody);
     }
 
 }

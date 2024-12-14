@@ -16,11 +16,13 @@ public class ReqMovieRegisterDto {
     public Movie toEntity() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate parsedDate = LocalDate.parse(releaseDate, formatter);
+        System.out.println(formatter);
+        System.out.println(parsedDate);
         return Movie.builder()
                 .title(title)
                 .director(director)
                 .genre(genre)
-                .releaseDate(parsedDate)
+                .release_date(parsedDate)
                 .build();
     }
 }

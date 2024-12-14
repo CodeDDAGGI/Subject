@@ -27,7 +27,8 @@ public class MovieController {
     private ReviewService reviewService;
 
     @PostMapping("/movies")
-    public ResponseEntity<?> registerMovie(ReqMovieRegisterDto dto){
+    public ResponseEntity<?> registerMovie(@RequestBody ReqMovieRegisterDto dto){
+        System.out.println(dto);
         return ResponseEntity.ok().body(movieService.registerMovie(dto));
     }
 

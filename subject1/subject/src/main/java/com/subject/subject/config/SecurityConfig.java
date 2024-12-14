@@ -27,12 +27,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().disable();
         http.httpBasic().disable();
         http.csrf().disable();
+        http.headers().frameOptions().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);  // 세션 비사용
         http.cors();
         http.exceptionHandling().authenticationEntryPoint(authenticationHandler);
 
         http.authorizeRequests()
-                .antMatchers("/**","/users/**" )
+                .antMatchers("/**" )
                 .permitAll()
                 .anyRequest()
                 .authenticated();

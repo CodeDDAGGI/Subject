@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface MovieMapper {
     int registerMovie(Movie movie);
-    User findByTitle(String title);
-    int existsDuplicate(Movie movie);
+//    Movie findByTitle(String title);
+    Movie existsDuplicate(Movie movie);
     List<Movie> findByMovie(@Param("title") String title,@Param("genre") String genre);
 }

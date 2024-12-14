@@ -26,8 +26,8 @@ public class UserControllerIntegrationTest {
         // Given
         String userJson = """
                 {
-                    "email":"example@example.com",
-                    "name":"testUser",
+                    "email":"example1@example.com",
+                    "name":"testUser1",
                     "password" : "1234"
                 }
                 """;

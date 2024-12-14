@@ -7,16 +7,16 @@
     <insert id="registerMovie"
             useGeneratedKeys="true"
             keyProperty="id">
-        insert into Movies_tb
-        values (default, #{title}, #{director}, #{genre}, #{releaseDate})
+        insert into Movies_tb(id ,title, director, genre, release_date)
+        values (default, #{title}, #{director}, #{genre}, #{release_date})
     </insert>
     <select id="existsDuplicate" resultType="com.subject.subject.entity.Movie">
         select
-            1
+            *
         from
             Movies_tb
         where
-            title = #{title} or director = #{director} or genre = #{genre}
+            title = #{title}
     </select>
     <select id="findByMovie" resultType="com.subject.subject.entity.Movie">
         select
@@ -36,5 +36,8 @@
             mv.genre = #{genre}
             AND
             mv.title = #{title}
+    </select>
+    <select id="findByTitle" resultType="com.subject.subject.entity.User">
+
     </select>
 </mapper>

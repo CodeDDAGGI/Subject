@@ -1,6 +1,5 @@
 package com.subject.subject.controller;
 
-import com.subject.subject.dto.response.RespRecommendDto;
 import com.subject.subject.service.RecomendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

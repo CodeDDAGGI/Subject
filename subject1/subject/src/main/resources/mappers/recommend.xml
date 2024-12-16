@@ -6,31 +6,30 @@
 <mapper namespace="com.subject.subject.repository.RecommendMapper">
     <select id="getPopularMovies" resultType="com.subject.subject.entity.Movie">
         select
-            *
+            mt.id as movie_id,
+            mt.title as title,
+            avg(rt.rating) as avgRating,
+            count(rt.rating) as reviewCount
         from
-            Movies_tb
-        where
-            id in (
-                select
-                    movie_id
-                from
-                    review
-                group by
-                    movie_id
-                order by
-                    avg(rating) desc
-                limit 10
-            )
+            Reviews_tb rt
+        join
+            Movies_tb mt on mt.id = rt.movie_id
+        group by
+            movie_id, title
+        order by
+            avg(rt.rating) desc
+        limit 5
     </select>
     <select id="getLatestMovies" resultType="com.subject.subject.entity.Movie">
         select
-            *
+            id,
+            title,
+            release_date
         from
-        Movies_tb
+            Movies_tb
         order by
             release_date desc
-        where
-            limit 5
+        limit 5
 
     </select>
 </mapper>

@@ -7,8 +7,8 @@
     <insert id="add"
             useGeneratedKeys="true"
             keyProperty="id">
-        insert into Reviews_tb  (movie_id, user_id, rating, content, created_at)
-        values(#{movieId}, #{userId}, #{content}, #{rating}))
+        insert into Reviews_tb  ( id ,movie_id, user_id, content, rating, created_at)
+        values(default , #{movieId}, #{userId}, #{content}, #{rating} , now())
     </insert>
 
     <select id="getByMovieId" resultType="com.subject.subject.entity.Review">
@@ -25,4 +25,5 @@
         where
             r.movie_id = #{movieId}
     </select>
+
 </mapper>

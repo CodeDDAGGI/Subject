@@ -45,7 +45,7 @@ public class UserControllerIntegrationTest {
     void loginTest() throws Exception {
         String userJson = """
                 {
-                    "email":"example@example.com",
+                    "email":"example1@example.com",
                     "password" : "1234"
                 }""";
         ResultActions mvcResult = mockMvc.perform(post("/users/login")
@@ -54,7 +54,6 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isOk());
 
         String responsebody = mvcResult.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-//        log.info("responsebody : {}", responsebody);
         System.out.println(responsebody);
 
     }

@@ -13,6 +13,7 @@ spring:
       password:
       initialization-mode: never
       schema: classpath:schema.sql
+
   h2:
     console:
       enabled: true

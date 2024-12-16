@@ -24,20 +24,38 @@
             mv.title,
             mv.director,
             mv.genre,
-            mv.releaseDate as releaseDate,
+            mv.release_date as releaseDate,
             AVG(rv.rating) as rating
         from
             Movies_tb mv
         left join
             Reviews_tb rv
         on
-            mv.id = rv.movieId
+            mv.id = rv.movie_id
         where
             mv.genre = #{genre}
-            AND
+            or
             mv.title = #{title}
     </select>
-    <select id="findByTitle" resultType="com.subject.subject.entity.User">
-
+    <select id="getMovie" resultType="com.subject.subject.entity.Movie">
+        select
+            *
+        from
+            Movies_tb
+        where
+            id = #{movieId}
+    </select>
+    <select id="findByPage" resultType="com.subject.subject.entity.Movie">
+        select
+            *
+        from
+            Movies_tb
+        limit #{page}, #{size}
+    </select>
+    <select id="countMovies" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            Movies_tb
     </select>
 </mapper>

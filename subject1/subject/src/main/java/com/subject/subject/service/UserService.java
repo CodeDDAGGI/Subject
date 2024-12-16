@@ -30,7 +30,9 @@ public class UserService {
         User foundUser = userMapper.findByEmail(user.getEmail());
         if(foundUser != null){
             if(dto.getEmail().equals(foundUser.getEmail())){
-                System.out.println("중복된 이메일입니다 ");
+                return RespSignUpDto.builder()
+                        .message("중복된 이메일입니다")
+                        .build();
             }
         }
         userMapper.register(user);
@@ -42,6 +44,13 @@ public class UserService {
 
     public RespSignInDto login(ReqSignInDto dto){
         User user = userMapper.findByEmail(dto.getEmail());
+        System.out.println("로그인 정보" + dto);
+        System.out.println("유저 이메일 정보" + user);
+        if(user == null){
+            return RespSignInDto.builder()
+                    .message("로그인 실패")
+                    .build();
+        }
         if(user.getEmail().equals(dto.getEmail())&& passwordEncoder.matches(dto.getPassword(), user.getPassword())){
             return RespSignInDto.builder()
                     .expireDate(jwtProvider.getExpireDate().toString())

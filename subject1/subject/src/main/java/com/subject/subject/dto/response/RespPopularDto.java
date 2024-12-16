@@ -5,10 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RespRecommendDto {
-    private Long movieId;
+public class RespPopularDto {
+    private Long id;
     private String title;
-    private Double rating;
-    private String releaseDate;
+    private Double avgRating;
     private Long reviewCount;
 }
